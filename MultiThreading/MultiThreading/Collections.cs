@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -132,6 +133,47 @@ namespace MultiThreading
             {
                 Console.WriteLine("Key: {0}, Value: {1}", author.Key, author.Value);
             }
+        }
+
+        public void NameValueCollection()
+        {
+            NameValueCollection myCol = new NameValueCollection();
+            myCol.Add("one", "Thriller");
+            myCol.Add("two", "Fantasy");
+            myCol.Add("three", "Drama");
+            myCol.Add("one", "Romantic");
+
+            // Displays the values in the NameValueCollection in two different ways.
+            Console.WriteLine("Displays the elements using the AllKeys property and the Item (indexer) property:");
+            PrintKeysAndValues(myCol);
+            Console.WriteLine("Displays the elements using GetKey and Get:");
+            PrintKeysAndValues2(myCol);
+
+            // Gets a value either by index or by key.
+            Console.WriteLine("Index 1 contains the value {0}.", myCol[1]);
+            Console.WriteLine("Key \"one\" has the value {0}.", myCol["one"]);
+            Console.WriteLine();
+
+            // Searches for a key and deletes it.
+            myCol.Remove("two");
+            Console.WriteLine("The collection contains the following elements after removing \"two\":");
+            PrintKeysAndValues(myCol);
+        }
+
+        public static void PrintKeysAndValues(NameValueCollection myCol)
+        {
+            Console.WriteLine("   KEY        VALUE");
+            foreach (String s in myCol.AllKeys)
+                Console.WriteLine("   {0,-10} {1}", s, myCol[s]);
+            Console.WriteLine();
+        }
+
+        public static void PrintKeysAndValues2(NameValueCollection myCol)
+        {
+            Console.WriteLine("   [INDEX] KEY        VALUE");
+            for (int i = 0; i < myCol.Count; i++)
+                Console.WriteLine("   [{0}]     {1,-10} {2}", i, myCol.GetKey(i), myCol.Get(i));
+            Console.WriteLine();
         }
     }
 }

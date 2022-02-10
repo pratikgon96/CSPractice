@@ -124,6 +124,8 @@ namespace MultiThreading
             collections.List();
             Console.WriteLine("-----------------------------HashTable--------------------------------");
             collections.HashTable();
+            Console.WriteLine("-----------------NameValueCollection---------------------");
+            collections.NameValueCollection();
         }
 
         public static void ThreadingMethods()

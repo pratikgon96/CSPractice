@@ -82,6 +82,20 @@ namespace MultiThreading
 
             foreach (string str in result1)
                 Console.WriteLine(str);
+
+            IList<string> strList3 = new List<string>() { "One", "Two", "three", "Four" };
+            IList<string> strList2 = new List<string>() { "Two", "THREE", "Four", "Five" };
+
+            var result2 = strList3.Union(strList2);
+
+            foreach (string str in result2)
+                Console.WriteLine(str);
+
+
+            var result3 = strList1.Intersect(strList2);
+
+            foreach (string str in result3)
+                Console.WriteLine(str);
         }
     }
 }
